@@ -1,0 +1,22 @@
+<div class="row mx-auto">
+  <div class="col-12 col-sm-6" *ngFor="let pokemon of pokemonList" [class.selected]="pokemon.selected"
+    (click)="selectCard(pokemon)">
+    <div class="card border-dark mb-4" [class.selected-orange]="pokemon.selectedOrange">
+      <img class="card-img-top" [src]="pokemon.imageUrl" alt="{{ pokemon.name }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ pokemon.name | titlecase }}</h5>
+        <p class="card-text">ID: {{ pokemon.id }}</p>
+      </div>
+      <div class="card-footer" [hidden]="!pokemon.showDetails">
+        <p class="card-text">Types: {{ pokemon.types }}</p>
+        <div *ngFor="let stat of pokemon.stats">
+          <p class="card-text">{{ stat.name }}: {{ stat.value }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary btn-batalla" (click)="iniciarBatalla()">
+  <i class="bi bi-sword"></i> Batalla
+</button>
